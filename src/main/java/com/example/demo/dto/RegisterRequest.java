@@ -1,57 +1,32 @@
 package com.example.demo.dto;
 
+import com.example.demo.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class RegisterRequest {
-    @NotBlank(message = "Le nom est requis")
-    @Size(min = 2, message = "Le nom doit contenir au moins 2 caractères")
-    private String lastname;
-
-    @NotBlank(message = "Le prénom est requis")
-    @Size(min = 2, message = "Le prénom doit contenir au moins 2 caractères")
-    private String firstname;
-
-    @NotBlank(message = "L'email est requis")
-    @Email(message = "Format d'email invalide")
     private String email;
-
-    @NotBlank(message = "Le mot de passe est requis")
-    @Size(min = 6, message = "Le mot de passe doit contenir au moins 6 caractères")
     private String password;
+    private String prenom;
+    private String nom;
+    @NotBlank
+    @Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Numéro de téléphone invalide")
+    private String telephone;
+    private Role role;
 
-    public String getLastname() {
-        return lastname;
-    }
+    // Si Patient
+    private String adresse;
+    private LocalDate dateNaissance;
+    private String contactUrgence;
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    // Si Médecin (optionnel si gestion multi-rôle)
+    private String numeroLicence;
+    private Long specialiteId;
+    private String description;
 } 

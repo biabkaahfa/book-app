@@ -40,6 +40,7 @@ public class SecurityConfig {
             .and()
             .authorizeHttpRequests()
             .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/specialites/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin().disable()

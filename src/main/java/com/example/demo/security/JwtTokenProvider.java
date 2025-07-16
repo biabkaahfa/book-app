@@ -28,9 +28,10 @@ public class JwtTokenProvider {
 
         return Jwts.builder()
                 .setSubject(user.getEmail())
-                .claim("lastname", user.getLastname())
-                .claim("firstname", user.getFirstname())
-                .claim("roles", user.getRoles())
+                .claim("id", user.getId())
+                .claim("nom", user.getNom())
+                .claim("prenom", user.getPrenom())
+                .claim("role", user.getRole())
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(getSigningKey())
@@ -58,4 +59,4 @@ public class JwtTokenProvider {
             return false;
         }
     }
-} 
+}

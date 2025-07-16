@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     private final AuthService authService;
 
+
     @org.springframework.beans.factory.annotation.Autowired
     public AuthController(AuthService authService) {
         this.authService = authService;
@@ -21,6 +22,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
+        System.out.println(request);
         return ResponseEntity.ok(authService.register(request));
     }
 

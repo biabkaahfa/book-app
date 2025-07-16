@@ -2,48 +2,27 @@ package com.example.demo.dto;
 
 // import lombok.Data; // supprimé car plus nécessaire
 
+import com.example.demo.enums.Role;
+import lombok.Data;
+
+
+@Data
 public class AuthResponse {
     private String token;
-    private String lastname;
-    private String firstname;
-    private String email;
-
-    public AuthResponse(String token, String lastname, String firstname, String email) {
-        this.token = token;
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
+    private String nom;
+    private String prenom;
+    private String role;
+private  long id;
+    public AuthResponse( String nom, String prenom, Role role) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.role = role.name();
     }
+    public AuthResponse( String token) {
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
         this.token = token;
     }
 
-    public String getLastname() {
-        return lastname;
-    }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 } 
